@@ -363,18 +363,18 @@ def select_n_estimatorsGmean():
 
 
 if __name__ == '__main__':
-    X = pd.read_excel()
-    y = pd.read_excel()
-
+    X = pd.read_excel('data/features_all.xlsx')
+    y = pd.read_excel('data/label_all.xlsx')
     sm = BorderlineSMOTE(random_state=42, k_neighbors=5, kind="borderline-1", sampling_strategy={1: 500})
     X, y = sm.fit_resample(X, y)
     print(y['label'].value_counts())
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2,
                                                          random_state=7)
-
+    print("----------")
+    #choose one method
     #adaboost()
     # SP_AdaBoost()
-    # easy_ensemble_ada()
+    easy_ensemble_ada()
     # easy_ensemble_SP_Ada()
     #select_n_estimatorsAUC()
     #select_n_estimatorsF1()
